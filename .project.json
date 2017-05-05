@@ -12,7 +12,8 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": true
+    "buildRequired": true,
+    "lastBuildDateTime": "Thu, 04 May 2017 09:24:56 GMT"
   },
   "generation": [
     {
@@ -46,5 +47,10 @@
       "xml": "fioriXmlAnalysis",
       "js": "fioriJsValidator"
     }
+  },
+  "hcpdeploy": {
+    "account": "i313404trial",
+    "name": "opentickets",
+    "lastVersionWeTriedToDeploy": "1.0.0"
   }
 }

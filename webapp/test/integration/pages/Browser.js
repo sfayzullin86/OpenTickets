@@ -14,7 +14,7 @@ sap.ui.define([
 					return this.waitFor(this.createAWaitForAnEntitySet({
 						entitySet: "Objects",
 						success: function(aEntitySet) {
-							Opa5.getHashChanger().setHash("/TICKETSet/" + aEntitySet[iObjIndex].TicketId);
+							Opa5.getHashChanger().setHash("/TICKETOPENSet/" + aEntitySet[iObjIndex].TicketId);
 						}
 					}));
 				},
@@ -23,7 +23,7 @@ sap.ui.define([
 					return this.waitFor({
 						success: function() {
 							var sObjectId = this.getContext().currentItem.id;
-							Opa5.getHashChanger().setHash("/TICKETSet/" + sObjectId);
+							Opa5.getHashChanger().setHash("/TICKETOPENSet/" + sObjectId);
 						}
 					});
 				},
@@ -46,7 +46,7 @@ sap.ui.define([
 						success: function(aEntitySet) {
 							var oHashChanger = Opa5.getHashChanger(),
 								sHash = oHashChanger.getHash();
-							Opa5.assert.strictEqual(sHash, "TICKETSet/" + aEntitySet[iObjIndex].TicketId, "The Hash is not correct");
+							Opa5.assert.strictEqual(sHash, "TICKETOPENSet/" + aEntitySet[iObjIndex].TicketId, "The Hash is not correct");
 						}
 					}));
 				},
@@ -57,7 +57,7 @@ sap.ui.define([
 							var sObjectId = this.getContext().currentItem.id,
 								oHashChanger = Opa5.getHashChanger(),
 								sHash = oHashChanger.getHash();
-							Opa5.assert.strictEqual(sHash, "TICKETSet/" + sObjectId, "The Hash is not correct");
+							Opa5.assert.strictEqual(sHash, "TICKETOPENSet/" + sObjectId, "The Hash is not correct");
 						}
 					});
 				},

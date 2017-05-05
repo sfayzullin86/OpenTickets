@@ -25,7 +25,7 @@
         "id": 1978925,
         "runnerId": "webapprunner",
         "displayName": "App in FLP Sandbox",
-        "lastRunTimeStamp": 1493889653112
+        "lastRunTimeStamp": 1494008748876
       }
     },
     {
@@ -162,5 +162,8 @@
         "displayName": "App as Fiori Component"
       }
     }
-  ]
+  ],
+  "hybrid": {
+    "dirty": true
+  }
 }

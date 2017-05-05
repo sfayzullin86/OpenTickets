@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "OpenTickets.OpenTickets",
+        "description": "Open Tickets",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#OpenTickets-Display",
+        "navigationComponentName": "OpenTickets",
+        "intentSemanticObject": "OpenTickets",
+        "intentAction": "Display",
+        "html5ApplicationName": "opentickets",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "7ffd7a59-e70a-4bd5-bc7d-73219485f67f"
+        ],
+        "contentPackages": [
+            "e18b85de-df37-4dca-8156-1b25a1cf755b"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Open Tickets",
+        "subtitle": "",
+        "searchKeywords": "Open Tickets,",
+        "displayIconUrl": "sap-icon://clinical-tast-tracker",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}
