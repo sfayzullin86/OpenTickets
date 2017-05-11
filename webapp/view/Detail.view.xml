@@ -34,21 +34,9 @@
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>
-		
 		<semantic:saveAction>
 			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
 		</semantic:saveAction>
-		<semantic:cancelAction>
-			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
-		</semantic:cancelAction>
-		
-		<!--
-		<semantic:editAction>
-			<semantic:EditAction id="edit" press="onEdit"/>
-		</semantic:editAction>
-		<semantic:customFooterContent>
-			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
-		</semantic:customFooterContent>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
@@ -58,7 +46,5 @@
 		<semantic:saveAsTileAction>
 			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
 		</semantic:saveAsTileAction>
-		-->
-		
 	</semantic:DetailPage>
 </mvc:View>

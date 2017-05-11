@@ -37,6 +37,76 @@ sap.ui.define([
 		/* =========================================================== */
 
 		/**
+		 * Event handler (attached declaratively) for the view save button. Saves the changes added by the user. 
+		 * @function
+		 * @public
+		 */
+		onSave: function() {
+			var that = this,
+				oModel = this.getModel();
+		
+			// abort if the  model has not been changed
+			if (!oModel.hasPendingChanges()) {
+				MessageBox.information(
+					this._oResourceBundle.getText("noChangesMessage"), {
+						id: "noChangesInfoMessageBox",
+						styleClass: that.getOwnerComponent().getContentDensityClass()
+					}
+				);
+				return;
+			}
+		//	this.getModel("appView").setProperty("/busy", true);
+		//	if (this._oViewModel.getProperty("/mode") === "edit") {
+				// attach to the request completed event of the batch
+				oModel.attachEventOnce("batchRequestCompleted", function(oEvent) {
+					if (that._checkIfBatchRequestSucceeded(oEvent)) {
+						that._fnUpdateSuccess();
+					} else {
+						that._fnEntityCreationFailed();
+						MessageBox.error(that._oResourceBundle.getText("updateError"));
+					}
+				});
+			//}
+			oModel.submitChanges();
+		},
+
+		_checkIfBatchRequestSucceeded: function(oEvent) {
+			var oParams = oEvent.getParameters();
+			var aRequests = oEvent.getParameters().requests;
+			var oRequest;
+			if (oParams.success) {
+				if (aRequests) {
+					for (var i = 0; i < aRequests.length; i++) {
+						oRequest = oEvent.getParameters().requests[i];
+						if (!oRequest.success) {
+							return false;
+						}
+					}
+				}
+				return true;
+			} else {
+				return false;
+			}
+		},
+		
+		/**
+		 * Event handler (attached declaratively) for the view cancel button. Asks the user confirmation to discard the changes. 
+		 * @function
+		 * @public
+		 */
+		onCancel: function() {
+			// check if the model has been changed
+			if (this.getModel().hasPendingChanges()) {
+				// get user confirmation first
+				this._showConfirmQuitChanges(); // some other thing here....
+			} else {
+				this.getModel("appView").setProperty("/addEnabled", true);
+				// cancel without confirmation
+				this._navBack();
+			}
+		},
+	
+		/**
 		 * Event handler when the share by E-Mail button has been clicked
 		 * @public
 		 */
