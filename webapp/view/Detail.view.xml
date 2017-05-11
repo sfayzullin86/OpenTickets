@@ -4,57 +4,33 @@
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
-				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title='test'>
 				<f:content>
-					<!--<ObjectHeader id="objectHeader" title="{Description}"></ObjectHeader>-->
-					
 					<Label text="Description" required="false"/> 
 					<Input name="Description" id="Description_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="false"
 						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40 } }"/>
-						
 					<Label text="Priority" required="false"/>
 					<ComboBox name="Priority" id="Priority" enabled="true" visible="true" editable="true" items="{/PRIORITYSet}" value="{ path: 'PriorityTxt', type: 'sap.ui.model.odata.type.String'}">
 						<items> 
 						<core:Item key="{Priority}" text="{PriorityTxt}"/> 
 						</items> 
 					</ComboBox>
-					
 					<Label text="Status" required="false"/>
 					<ComboBox name="Status" id="Status" enabled="true" visible="true" editable="true" items="{/STATUSSet}" value="{ path: 'StatusTxt', type: 'sap.ui.model.odata.type.String'}">
 						<items> 
 						<core:Item key="{Status}" text="{StatusTxt}"/> 
 						</items> 
 					</ComboBox>
-						
 					<Label text="Category" required="false"/>
 					<ComboBox name="Category" id="Category" enabled="true" visible="true" editable="true" items="{/SOLCATSet}" value="{ path: 'SolcatTxt', type: 'sap.ui.model.odata.type.String'}">
 						<items> 
 						<core:Item key="{SolcatId}" text="{SolcatTxt}"/> 
 						</items> 
 					</ComboBox>
-						
 					<Label text="Detail Description" />
 					<TextArea name="DetailDescription" id="DetailDescription" value="{ path: 'TicketTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%" editable="false"/>
-					
 					<Label text="Solution" />
 					<TextArea name="Solution" id="Solution" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%"/>
-					
-					
-					
-					<!--
-					<Input name="Priority" id="Priority_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="true"
-						value="{ path: 'Priority', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:1 } }"/>
-					-->
-						
-					<!--
-					<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
-						<items>
-							<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}"></IconTabFilter>
-							<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
-						</items>
-					</IconTabBar>
-					-->
-					
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>
