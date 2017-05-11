@@ -54,7 +54,7 @@ sap.ui.define([
 				);
 				return;
 			}
-
+			
 			oModel.attachEventOnce("batchRequestCompleted", function(oEvent) {
 				if (that._checkIfBatchRequestSucceeded(oEvent)) {
 					that._fnUpdateSuccess();
@@ -84,82 +84,11 @@ sap.ui.define([
 				return false;
 			}
 		},
-	
-		/**
-		 * Event handler when the share by E-Mail button has been clicked
-		 * @public
-		 */
-		onShareEmailPress: function() {
-			var oViewModel = this.getModel("detailView");
-
-			sap.m.URLHelper.triggerEmail(
-				null,
-				oViewModel.getProperty("/shareSendEmailSubject"),
-				oViewModel.getProperty("/shareSendEmailMessage")
-			);
-		},
-
-		/**
-		 * Event handler when the share in JAM button has been clicked
-		 * @public
-		 */
-		onShareInJamPress: function() {
-			var oViewModel = this.getModel("detailView"),
-				oShareDialog = sap.ui.getCore().createComponent({
-					name: "sap.collaboration.components.fiori.sharing.dialog",
-					settings: {
-						object: {
-							id: location.href,
-							share: oViewModel.getProperty("/shareOnJamTitle")
-						}
-					}
-				});
-
-			oShareDialog.open();
-		},
-
-		/**
-		 * Event handler (attached declaratively) for the view delete button. Deletes the selected item. 
-		 * @function
-		 * @public
-		 */
-		onDelete: function() {
-			var that = this;
-			var oViewModel = this.getModel("detailView"),
-				sPath = oViewModel.getProperty("/sObjectPath"),
-				sObjectHeader = this._oODataModel.getProperty(sPath + "/Description"),
-				sQuestion = this._oResourceBundle.getText("deleteText", sObjectHeader),
-				sSuccessMessage = this._oResourceBundle.getText("deleteSuccess", sObjectHeader);
-
-			var fnMyAfterDeleted = function() {
-				MessageToast.show(sSuccessMessage);
-				oViewModel.setProperty("/busy", false);
-				var oNextItemToSelect = that.getOwnerComponent().oListSelector.findNextItem(sPath);
-				that.getModel("appView").setProperty("/itemToSelect", oNextItemToSelect.getBindingContext().getPath()); //save last deleted
-			};
-			this._confirmDeletionByUser({
-				question: sQuestion
-			}, [sPath], fnMyAfterDeleted);
-		},
-
-		/**
-		 * Event handler (attached declaratively) for the view edit button. Open a view to enable the user update the selected item. 
-		 * @function
-		 * @public
-		 */
-		onEdit: function() {
-			this.getModel("appView").setProperty("/addEnabled", false);
-			var sObjectPath = this.getView().getElementBinding().getPath();
-			this.getRouter().getTargets().display("create", {
-				mode: "update",
-				objectPath: sObjectPath
-			});
-		},
 
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */
-
+		
 		/**
 		 * Binds the view to the object path and expands the aggregated line items.
 		 * @function
