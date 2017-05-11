@@ -45,7 +45,6 @@ sap.ui.define([
 			var that = this,
 				oModel = this.getModel();
 		
-			// abort if the  model has not been changed
 			if (!oModel.hasPendingChanges()) {
 				MessageBox.information(
 					this._oResourceBundle.getText("noChangesMessage"), {
@@ -55,18 +54,15 @@ sap.ui.define([
 				);
 				return;
 			}
-		//	this.getModel("appView").setProperty("/busy", true);
-		//	if (this._oViewModel.getProperty("/mode") === "edit") {
-				// attach to the request completed event of the batch
-				oModel.attachEventOnce("batchRequestCompleted", function(oEvent) {
-					if (that._checkIfBatchRequestSucceeded(oEvent)) {
-						that._fnUpdateSuccess();
-					} else {
-						that._fnEntityCreationFailed();
-						MessageBox.error(that._oResourceBundle.getText("updateError"));
-					}
-				});
-			//}
+
+			oModel.attachEventOnce("batchRequestCompleted", function(oEvent) {
+				if (that._checkIfBatchRequestSucceeded(oEvent)) {
+					that._fnUpdateSuccess();
+				} else {
+					that._fnEntityCreationFailed();
+					MessageBox.error(that._oResourceBundle.getText("updateError"));
+				}
+			});
 			oModel.submitChanges();
 		},
 
@@ -86,23 +82,6 @@ sap.ui.define([
 				return true;
 			} else {
 				return false;
-			}
-		},
-		
-		/**
-		 * Event handler (attached declaratively) for the view cancel button. Asks the user confirmation to discard the changes. 
-		 * @function
-		 * @public
-		 */
-		onCancel: function() {
-			// check if the model has been changed
-			if (this.getModel().hasPendingChanges()) {
-				// get user confirmation first
-				this._showConfirmQuitChanges(); // some other thing here....
-			} else {
-				this.getModel("appView").setProperty("/addEnabled", true);
-				// cancel without confirmation
-				this._navBack();
 			}
 		},
 	
