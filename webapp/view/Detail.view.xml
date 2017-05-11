@@ -1,13 +1,11 @@
 <mvc:View controllerName="OpenTickets.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
-	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form">
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
 				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
 				<f:content>
-					
-					
 					<!--<ObjectHeader id="objectHeader" title="{Description}"></ObjectHeader>-->
 					
 					<Label text="Description" required="false"/> 
@@ -15,22 +13,31 @@
 						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40 } }"/>
 						
 					<Label text="Priority" required="false"/>
-					<ComboBox name="PriorityTxt" id="PriorityTxt" enabled="true" visible="true" editable="true"
-						value="{ path: 'PriorityTxt', type: 'sap.ui.model.odata.type.String'}"/>
-						
+					<ComboBox name="Priority" id="Priority" enabled="true" visible="true" editable="true" items="{/PRIORITYSet}" value="{ path: 'PriorityTxt', type: 'sap.ui.model.odata.type.String'}">
+						<items> 
+						<core:Item key="{Priority}" text="{PriorityTxt}"/> 
+						</items> 
+					</ComboBox>
+					
 					<Label text="Status" required="false"/>
-					<ComboBox name="StatusTxt" id="StatusTxt" enabled="true" visible="true" editable="true"
-						value="{ path: 'StatusTxt', type: 'sap.ui.model.odata.type.String'}"/>
+					<ComboBox name="Status" id="Status" enabled="true" visible="true" editable="true" items="{/STATUSSet}" value="{ path: 'StatusTxt', type: 'sap.ui.model.odata.type.String'}">
+						<items> 
+						<core:Item key="{Status}" text="{StatusTxt}"/> 
+						</items> 
+					</ComboBox>
 						
 					<Label text="Category" required="false"/>
-					<ComboBox name="SolcatTxt" id="SolcatTxt" enabled="true" visible="true" editable="true"
-						value="{ path: 'SolcatTxt', type: 'sap.ui.model.odata.type.String'}"/>
+					<ComboBox name="Category" id="Category" enabled="true" visible="true" editable="true" items="{/SOLCATSet}" value="{ path: 'SolcatTxt', type: 'sap.ui.model.odata.type.String'}">
+						<items> 
+						<core:Item key="{SolcatId}" text="{SolcatTxt}"/> 
+						</items> 
+					</ComboBox>
 						
 					<Label text="Detail Description" />
-					<TextArea name="CommentTxt" id="CommentTxt" value="{ path: 'CommentTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%" editable="false"/>
+					<TextArea name="DetailDescription" id="DetailDescription" value="{ path: 'TicketTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%" editable="false"/>
 					
 					<Label text="Solution" />
-					<TextArea name="SolutionTxt" id="SolutionTxt" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%"/>
+					<TextArea name="Solution" id="Solution" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%"/>
 					
 					
 					
