@@ -13,10 +13,26 @@
 					<Label text="Description" required="false"/> 
 					<Input name="Description" id="Description_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="false"
 						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40 } }"/>
-					<Label text="Priority" required="false"/>
-					<ComboBox name="Priority" id="Priority_id" enabled="true" visible="true" editable="true"
-						value="{ path: 'Priority', type: 'sap.ui.model.odata.type.String'}"/>
 						
+					<Label text="Priority" required="false"/>
+					<ComboBox name="PriorityTxt" id="PriorityTxt" enabled="true" visible="true" editable="true"
+						value="{ path: 'PriorityTxt', type: 'sap.ui.model.odata.type.String'}"/>
+						
+					<Label text="Status" required="false"/>
+					<ComboBox name="StatusTxt" id="StatusTxt" enabled="true" visible="true" editable="true"
+						value="{ path: 'StatusTxt', type: 'sap.ui.model.odata.type.String'}"/>
+						
+					<Label text="Category" required="false"/>
+					<ComboBox name="SolcatTxt" id="SolcatTxt" enabled="true" visible="true" editable="true"
+						value="{ path: 'SolcatTxt', type: 'sap.ui.model.odata.type.String'}"/>
+						
+					<Label text="Detail Description" />
+					<TextArea name="CommentTxt" id="CommentTxt" value="{ path: 'CommentTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%" editable="false"/>
+					
+					<Label text="Solution" />
+					<TextArea name="SolutionTxt" id="SolutionTxt" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%"/>
+					
+					
 					
 					<!--
 					<Input name="Priority" id="Priority_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="true"
