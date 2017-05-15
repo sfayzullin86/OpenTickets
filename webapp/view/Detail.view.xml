@@ -43,10 +43,10 @@
 			</f:SimpleForm>
 		</semantic:content>
 	<semantic:saveAction>
-	    <semantic:SaveAction id="__action0"/>
+	    <semantic:SaveAction id="SaveButton_id" press="onSave"/>
 	</semantic:saveAction>
 	<semantic:cancelAction>
-	    <semantic:CancelAction id="__action1"/>
+	    <semantic:CancelAction id="CancelButton_id" press="onCancel"/>
 	</semantic:cancelAction>
 	</semantic:DetailPage>
 </mvc:View>

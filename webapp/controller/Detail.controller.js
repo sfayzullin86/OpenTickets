@@ -84,6 +84,23 @@ sap.ui.define([
 				return false;
 			}
 		},
+		
+			/**
+		 * Event handler (attached declaratively) for the view cancel button. Asks the user confirmation to discard the changes. 
+		 * @function
+		 * @public
+		 */
+		onCancel: function() {
+			// check if the model has been changed
+			if (this.getModel().hasPendingChanges()) {
+				// get user confirmation first
+				this._showConfirmQuitChanges(); // some other thing here....
+			} else {
+				this.getModel("appView").setProperty("/addEnabled", true);
+				// cancel without confirmation
+				this._navBack();
+			}
+		},
 
 		/* =========================================================== */
 		/* begin: internal methods                                     */
