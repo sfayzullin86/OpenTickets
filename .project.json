@@ -52,5 +52,10 @@
     "account": "i313404trial",
     "name": "opentickets",
     "lastVersionWeTriedToDeploy": "1.0.0"
+  },
+  "dataBinding": {
+    "/webapp/view/Detail.view.xml": {
+      "entitySet": "/TICKETOPENSet"
+    }
   }
 }

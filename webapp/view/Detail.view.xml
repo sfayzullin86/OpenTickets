@@ -1,24 +1,32 @@
-<mvc:View controllerName="OpenTickets.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
-	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
-		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="OpenTickets.controller.Detail"><semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" cancelAction="{/TICKETOPENSet}" saveAction="{/TICKETOPENSet}">
 		<semantic:content>
-			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
-				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm" labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
 				<f:content>
 					<Label text="Description" required="false"/> 
-					<Input name="Description" id="Description_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="false"
-						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40 } }"/>
+					<Input name="Description" id="Description_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="false" value="{Description}" dateFormat=""/>
+				
+				
 					<Label text="Priority" required="false"/>
-					<ComboBox name="Priority" id="Priority" enabled="true" visible="true" editable="true" items="{/PRIORITYSet}" value="{ path: 'Priority', type: 'sap.ui.model.odata.type.String'}">
-						<items> 
+					
+					<ComboBox name="Priority" id="Priority_id" enabled="true" visible="true" editable="true" items="{/PRIORITYSet}" value="{ path: 'Priority', type: 'sap.ui.model.odata.type.String'}" selectedKey="{Priority}" placeholder="{PriorityTxt}">
+					
 						<core:Item key="{Priority}" text="{Priority}"/> 
-						</items> 
+						 
 					</ComboBox>
+					
+					<ComboBox value="List Item 1" selectedKey="{Priority}" id="PriorityDesc_id" name="Test" placeholder="{PriorityTxt}" items="{/PRIORITYSet}">
+					
+					    <items>
+					
+					        <core:ListItem text="{PriorityTxt}" key="{Priority}" id="prio_id"/></items>
+					
+					</ComboBox>
+				
+				
 					<Label text="Status" required="false"/>
-					<ComboBox name="Status" id="Status" enabled="true" visible="true" editable="true" items="{/STATUSSet}" value="{ path: 'StatusTxt', type: 'sap.ui.model.odata.type.String'}">
+					<ComboBox name="Status" id="Status" enabled="true" visible="true" editable="true" items="{/STATUSSet}" value="{ path: 'Status', type: 'sap.ui.model.odata.type.String'}">
 						<items> 
-						<core:Item key="{Status}" text="{StatusTxt}"/> 
+						<core:Item key="{Status}" text="{Status}"/> 
 						</items> 
 					</ComboBox>
 					<Label text="Category" required="false"/>
@@ -27,15 +35,18 @@
 						<core:Item key="{SolcatId}" text="{SolcatTxt}"/> 
 						</items> 
 					</ComboBox>
-					<Label text="Detail Description" />
+					<Label text="Detail Description"/>
 					<TextArea name="DetailDescription" id="DetailDescription" value="{ path: 'TicketTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%" editable="false"/>
-					<Label text="Solution" />
+					<Label text="Solution"/>
 					<TextArea name="Solution" id="Solution" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%"/>
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>
-		<semantic:saveAction>
-			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
-		</semantic:saveAction>
+	<semantic:saveAction>
+	    <semantic:SaveAction id="__action0"/>
+	</semantic:saveAction>
+	<semantic:cancelAction>
+	    <semantic:CancelAction id="__action1"/>
+	</semantic:cancelAction>
 	</semantic:DetailPage>
 </mvc:View>
