@@ -4,41 +4,26 @@
 				<f:content>
 					<Label text="Description" required="false"/> 
 					<Input name="Description" id="Description_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true" editable="false" value="{Description}" dateFormat=""/>
-				
-				
 					<Label text="Priority" required="false"/>
-					
-					<ComboBox name="Priority" id="Priority_id" enabled="true" visible="true" editable="true" items="{/PRIORITYSet}" value="{ path: 'Priority', type: 'sap.ui.model.odata.type.String'}" selectedKey="{Priority}" placeholder="{PriorityTxt}">
-					
-						<core:Item key="{Priority}" text="{Priority}"/> 
-						 
+					<ComboBox value="List Item 1" selectedKey="{Priority}" id="Priority_id" name="Test" placeholder="{PriorityTxt}" items="{/PRIORITYSet}">
+					    <items>					        
+					    	<core:ListItem text="{PriorityTxt}" key="{Priority}" id="priorityitem_id"/>
+					    </items>
 					</ComboBox>
-					
-					<ComboBox value="List Item 1" selectedKey="{Priority}" id="PriorityDesc_id" name="Test" placeholder="{PriorityTxt}" items="{/PRIORITYSet}">
-					
-					    <items>
-					
-					        <core:ListItem text="{PriorityTxt}" key="{Priority}" id="prio_id"/></items>
-					
-					</ComboBox>
-				
-				
 					<Label text="Status" required="false"/>
-					<ComboBox name="Status" id="Status" enabled="true" visible="true" editable="true" items="{/STATUSSet}" value="{ path: 'Status', type: 'sap.ui.model.odata.type.String'}">
-						<items> 
-						<core:Item key="{Status}" text="{Status}"/> 
-						</items> 
+					<ComboBox value="List Item 1" selectedKey="{Status}" id="Status_id" placeholder="{StatusTxt}" items="{/STATUSSet}">
+					    <items>
+					        <core:ListItem text="{StatusTxt}" key="{Status}" id="stitem_id"/></items>
 					</ComboBox>
 					<Label text="Category" required="false"/>
-					<ComboBox name="Category" id="Category" enabled="true" visible="true" editable="true" items="{/SOLCATSet}" value="{ path: 'SolcatTxt', type: 'sap.ui.model.odata.type.String'}">
-						<items> 
-						<core:Item key="{SolcatId}" text="{SolcatTxt}"/> 
-						</items> 
+					<ComboBox value="List Item 1" selectedKey="{CategoryId}" id="Category_id" placeholder="{SolcatTxt}" items="{/SOLCATSet}">
+					    <items>
+					        <core:ListItem text="{SolcatTxt}" key="{SolcatId}" id="citem_id"/></items>
 					</ComboBox>
 					<Label text="Detail Description"/>
-					<TextArea name="DetailDescription" id="DetailDescription" value="{ path: 'TicketTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%" editable="false"/>
+					<TextArea name="DetailDescription" id="DetailDescription" value="{ path: 'TicketTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="20" width="100%" editable="false" rows="5"/>
 					<Label text="Solution"/>
-					<TextArea name="Solution" id="Solution" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="7" width="100%"/>
+					<TextArea name="Solution" id="Solution" value="{ path: 'SolutionTxt', type: 'sap.ui.model.odata.type.String'}" growing="true" growingMaxLines="20" width="100%" rows="7"/>
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>
