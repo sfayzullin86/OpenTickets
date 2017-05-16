@@ -90,15 +90,35 @@ sap.ui.define([
 		 * @function
 		 * @public
 		 */
-		onCancel: function() {
-			// check if the model has been changed
-			if (this.getModel().hasPendingChanges()) {
-				// get user confirmation first
-				this._showConfirmQuitChanges(); // some other thing here....
+		onCancel: function(oEvent) {
+			var that = this;
+			
+			var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
+			var fnLeave = function() {
+				that._oODataModel.resetChanges();
+				that._showDetail(oItem);
+			};
+			
+			if (this._oODataModel.hasPendingChanges()) {
+				//pending changes, ask user what he wants to do
+				var sQuestion = this.getResourceBundle().getText("warningConfirm");
+				var sTitle = this.getResourceBundle().getText("warning");
+	
+				MessageBox.show(sQuestion, {
+					icon: MessageBox.Icon.WARNING,
+					title: sTitle,
+					actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+					onClose: function(oAction) {
+						if (oAction === MessageBox.Action.OK) {
+							//reset the changes and reload ticket information
+							fnLeave();
+						} else {
+							//no changes, so do nothing
+						}
+					}
+			});
 			} else {
-				this.getModel("appView").setProperty("/addEnabled", true);
-				// cancel without confirmation
-				this._navBack();
+				//no pending changes, so do nothing
 			}
 		},
 
