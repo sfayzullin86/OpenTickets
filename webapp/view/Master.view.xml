@@ -10,21 +10,22 @@
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
-			<List id="list" items="{ path: '/TICKETOPENSet', sorter: { path: 'Description', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange" headerText="My Tickets" footerText="test">
+			<List id="list" items="{ path: '/TICKETOPENSet', sorter: { path: 'Description', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange" headerText="My Tickets" footerText="footer test">
 				<infoToolbar>
 					<Toolbar active="true" id="filterBar" press="">
-						<Title id="filterBarLabel" text="filter"/>
+						<Title id="filterBarLabel" text="filter test"/>
 					<content>
 					</content>
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Description}" intro="{Owner}" number=" " numberUnit="{StatusTxt}"/>
+					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Description}" intro="{OwnerNameText}" number=" " numberUnit="{StatusTxt}"/>
 				</items>
 			</List>
 		</semantic:content>
-		<semantic:addAction>
-			<semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd"/>
+		<semantic:sort><semantic:SortAction tooltip="Sort by ticket description" id="sortButton" press="onSort"/>
+		</semantic:sort>
+		<semantic:addAction><semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd" tooltip="Create new ticket"/>
 		</semantic:addAction>
 	</semantic:MasterPage>
 </mvc:View>
