@@ -10,16 +10,20 @@
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
-			<List id="list" items="{ path: '/TICKETOPENSet', sorter: { path: 'Description', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange" headerText="My Tickets" footerText="footer test">
+			<List id="list" items="{ path: '/TICKETOPENSet', sorter: { path: 'Description', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange" headerText="My Tickets">
 				<infoToolbar>
 					<Toolbar active="true" id="filterBar" press="">
-						<Title id="filterBarLabel" text="filter test"/>
+						<Title id="filterBarLabel" text="FilterBar Placeholder"/>
 					<content>
 					</content>
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Description}" intro="{OwnerNameText}" number=" " numberUnit="{StatusTxt}"/>
+					<ObjectListItem press="onSelectionChange" title="{Description}" intro="{OwnerNameText}" type="Navigation">
+						<firstStatus>
+							<ObjectStatus state="Success" text="{StatusTxt}"/>
+						</firstStatus>
+					</ObjectListItem>
 				</items>
 			</List>
 		</semantic:content>
