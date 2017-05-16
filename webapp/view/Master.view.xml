@@ -10,7 +10,8 @@
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
-			<List id="list" items="{ path: '/TICKETOPENSet', sorter: { path: 'Description', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange" headerText="My Tickets">
+			<List id="list" items="{ path: '/TICKETOPENSet', sorter: { path: 'Description', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange" headerText="Open Tickets">
+				<!--
 				<infoToolbar>
 					<Toolbar active="true" id="filterBar" press="">
 						<Title id="filterBarLabel" text="FilterBar Placeholder"/>
@@ -18,6 +19,7 @@
 					</content>
 					</Toolbar>
 				</infoToolbar>
+				-->
 				<items>
 					<ObjectListItem press="onSelectionChange" title="{Description}" intro="{OwnerNameText}" type="Navigation">
 						<firstStatus>
@@ -29,7 +31,9 @@
 		</semantic:content>
 		<semantic:sort><semantic:SortAction tooltip="Sort by ticket description" id="sortButton" press="onSort"/>
 		</semantic:sort>
+		<!--
 		<semantic:addAction><semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd" tooltip="Create new ticket"/>
 		</semantic:addAction>
+		-->
 	</semantic:MasterPage>
 </mvc:View>
