@@ -126,7 +126,6 @@ sap.ui.define([
 		 * @public
 		 */
 		onSort: function(oEvent) {
-			
 			var oView = this.getView();
 	        var oList = oView.byId("list");
 	        var oBinding = oList.getBinding("items");
