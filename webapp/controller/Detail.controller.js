@@ -51,6 +51,26 @@ sap.ui.define([
 		},
 		
 		/**
+		 * Event handler when the share in JAM button has been clicked
+		 * @public
+		 *
+		onShareInJamPress: function() {
+			var oViewModel = this.getModel("detailView"),
+				oShareDialog = sap.ui.getCore().createComponent({
+					name: "sap.collaboration.components.fiori.sharing.dialog",
+					settings: {
+						object: {
+							id: location.href,
+							share: oViewModel.getProperty("/shareOnJamTitle")
+						}
+					}
+				});
+
+			oShareDialog.open();
+		},
+		 */
+		
+		/**
 		 * Event handler (attached declaratively) for the view save button. Saves the changes added by the user. 
 		 * @function
 		 * @public
