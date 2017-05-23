@@ -37,6 +37,20 @@ sap.ui.define([
 		/* =========================================================== */
 
 		/**
+		 * Event handler when the share by E-Mail button has been clicked
+		 * @public
+		 */
+		onShareEmailPress: function() {
+			var oViewModel = this.getModel("detailView");
+
+			sap.m.URLHelper.triggerEmail(
+				null,
+				oViewModel.getProperty("/shareSendEmailSubject"),
+				oViewModel.getProperty("/shareSendEmailMessage")
+			);
+		},
+		
+		/**
 		 * Event handler (attached declaratively) for the view save button. Saves the changes added by the user. 
 		 * @function
 		 * @public
@@ -85,7 +99,7 @@ sap.ui.define([
 			}
 		},
 		
-			/**
+		/**
 		 * Event handler (attached declaratively) for the view cancel button. Asks the user confirmation to discard the changes. 
 		 * @function
 		 * @public
