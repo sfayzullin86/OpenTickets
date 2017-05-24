@@ -164,6 +164,7 @@ sap.ui.define([
 				this._showDetail(oItem);
 			}
 			that.getModel("appView").setProperty("/addEnabled", true);
+			that.getModel("appView").setProperty("/sortEnabled", true);
 		},
 
 		/**
