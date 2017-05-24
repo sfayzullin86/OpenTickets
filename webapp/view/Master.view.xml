@@ -23,7 +23,7 @@
 				<items>
 					<ObjectListItem press="onSelectionChange" title="{Description}" intro="{OwnerNameText}" type="Navigation">
 						<firstStatus>
-							<ObjectStatus state="Success" text="{StatusTxt}"/>
+							<ObjectStatus state="Error" text="{StatusTxt}"/>
 						</firstStatus>
 					</ObjectListItem>
 				</items>
